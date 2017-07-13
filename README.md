@@ -16,8 +16,8 @@
     cd k8s-grav
     minikube mount ./data:/data
     # open a new tab in terminal
-    kubectl create -f deployment.yml
-    kubectl expose deployment pinepain-grav --type=NodePort
+    kubectl apply -f deployment.yml
+    kubectl apply -f service.yaml
     minikube service pinepain-grav
     # at this point you should be pointed to grav main page in your default browser 
 
@@ -42,9 +42,6 @@ Now we can create deployment. Run `kubectl create -f deployment.yml`. In order t
 `kubectl expose deployment pinepain-grav --type=NodePort`. After service goes live `minikube service pinepain-grav` will
 open grav main page in your default browser. Login page will be located under `/admin` route where you could log in
 using default admin credentials `admin:admin`.
-
-*NOTE: At the moment when you log in, grav will improperly redirect you back to main page ignoring port. You will have to 
-go back to `/admin` page with proper port and refresh it and then you'll get that admin page.*   
 
 Also you may simply create and edit pages under `data/pages` directory using your favorite text editor and they will be
 immediately accessible from pods.
