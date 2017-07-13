@@ -14,7 +14,7 @@
     minikube start
     git clone https://github.com/pinepain/k8s-grav.git
     cd k8s-grav
-    minikube mount ./:/data
+    minikube mount ./data:/data
     # open a new tab in terminal
     kubectl create -f deployment.yml
     kubectl expose deployment pinepain-grav --type=NodePort
@@ -30,7 +30,7 @@ Clone this repository locally `git clone https://github.com/pinepain/k8s-grav.gi
 
 Go to `k8s-grav` folder by typing `cd k8s-grav`. **All further actions described as you are in `k8s-grav` folder.** 
 
-First you will need to share local folder to pods, to do that start minikube mount process: `minikube mount ./:/data`.
+First you will need to share local folder to pods, to do that start minikube mount process: `minikube mount ./data:/data`.
 This process needs to stay alive in order to keep mount folders be accessible. 
 
 *NOTE: By default we share local filesystem to persists grav files and users config.
