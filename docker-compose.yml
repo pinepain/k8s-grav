@@ -1,0 +1,6 @@
+version: '2'
+services:
+  grav:
+    build: .
+    ports:
+     - "30080:30080"
