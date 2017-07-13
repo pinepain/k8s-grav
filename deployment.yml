@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pinepain-grav
+spec:
+  template:
+    metadata:
+      labels:
+        run: pinepain-grav
+
+    spec:
+      containers:
+        - image: pinepain/grav
+          name: pinepain-grav
+          ports:
+          - containerPort: 30080
+            protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www/grav/user/pages
+              name: grav-pages
+            - mountPath: /var/www/grav/user/accounts
+              name: grav-accounts
+      volumes:
+        - name: grav-pages
+          hostPath:
+            path: /data/pages
+        - name: grav-accounts
+          hostPath:
+            path: /data/accounts
